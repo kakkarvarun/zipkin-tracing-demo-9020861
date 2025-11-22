@@ -20,6 +20,7 @@
     <java.version>17</java.version>
     <spring-cloud.version>2023.0.2</spring-cloud.version>
     <micrometer-tracing.version>1.2.4</micrometer-tracing.version>
+    <zipkin-reporter.version>2.16.3</zipkin-reporter.version>
   </properties>
 
   <dependencyManagement>
@@ -42,33 +43,38 @@
   </dependencyManagement>
 
   <dependencies>
+    <!-- REST API -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <!-- Eureka client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
 
+    <!-- Actuator -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
-    <!-- Tracing -->
+    <!-- Micrometer Tracing (Brave bridge) -->
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-tracing-bridge-brave</artifactId>
-      <version>${micrometer-tracing.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.micrometer</groupId>
-      <artifactId>micrometer-tracing-exporter-zipkin</artifactId>
-      <version>${micrometer-tracing.version}</version>
     </dependency>
 
+    <!-- Zipkin reporter for Brave -->
+    <dependency>
+      <groupId>io.zipkin.reporter2</groupId>
+      <artifactId>zipkin-reporter-brave</artifactId>
+      <version>${zipkin-reporter.version}</version>
+    </dependency>
+
+    <!-- Tests -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
