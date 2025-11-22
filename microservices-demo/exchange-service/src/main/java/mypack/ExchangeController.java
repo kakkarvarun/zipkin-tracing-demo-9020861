@@ -1,0 +1,25 @@
+package mypack;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/exchange")
+public class ExchangeController {
+
+    @GetMapping("/rate/from/{from}/to/{to}")
+    public Map<String, Object> getExchangeRate(@PathVariable String from, @PathVariable String to) {
+        Map<String, Object> response = new HashMap<>();
+        double rate = Math.random() * (90 - 70) + 70; // mock exchange rate
+        response.put("from", from);
+        response.put("to", to);
+        response.put("rate", rate);
+        response.put("port", 8000);
+        return response;
+    }
+}
+

@@ -1,0 +1,25 @@
+package mypack;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import reactor.core.publisher.Mono;
+
+@RestController
+@RequestMapping("/currency")
+public class CurrencyController {
+
+    private final CurrencyConversionService service;
+
+    public CurrencyController(CurrencyConversionService service) {
+        this.service = service;
+    }
+
+    @GetMapping("/convert/from/{from}/to/{to}/amount/{amount}")
+    public Mono<Map<String, Object>> convert(@PathVariable String from, @PathVariable String to, @PathVariable double amount) {
+        return service.convert(from, to, amount);
+    }
+}
