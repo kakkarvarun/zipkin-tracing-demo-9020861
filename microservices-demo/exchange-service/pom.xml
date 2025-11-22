@@ -18,12 +18,13 @@
 
   <properties>
     <java.version>17</java.version>
-    <micrometer-tracing.version>1.2.5</micrometer-tracing.version>
     <spring-cloud.version>2023.0.2</spring-cloud.version>
+    <micrometer-tracing.version>1.2.5</micrometer-tracing.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <!-- Spring Cloud BOM -->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
@@ -31,16 +32,16 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-    <!-- ADD THIS: manages micrometer-tracing*, including exporter-zipkin -->
-    <dependency>
-      <groupId>io.micrometer</groupId>
-      <artifactId>micrometer-tracing-bom</artifactId>
-      <version>${micrometer-tracing.version}</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-  </dependencies>
-</dependencyManagement>
+      <!-- Micrometer Tracing BOM (keeps transitive alignment) -->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-tracing-bom</artifactId>
+        <version>${micrometer-tracing.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <!-- REST API -->
@@ -61,14 +62,16 @@
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
-    <!-- Tracing: Brave bridge + Zipkin exporter (no versions needed when managed) -->
+    <!-- Tracing: Brave bridge + Zipkin exporter (pin versions explicitly) -->
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-tracing-bridge-brave</artifactId>
+      <version>${micrometer-tracing.version}</version>
     </dependency>
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-tracing-exporter-zipkin</artifactId>
+      <version>${micrometer-tracing.version}</version>
     </dependency>
 
     <!-- Tests -->
