@@ -60,7 +60,12 @@ File: `pom.xml` - updated to let Spring Boot manage micrometer tracing versions 
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-tracing-bridge-brave</artifactId>
-    </dependency>
+   </dependency>
+   <dependency>
+     <groupId>io.zipkin.reporter2</groupId>
+     <artifactId>zipkin-reporter-brave</artifactId>
+   </dependency>
+
 
     <!-- Micrometer Zipkin exporter - no explicit version -->
    <!-- <dependency>

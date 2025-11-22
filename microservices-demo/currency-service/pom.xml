@@ -44,13 +44,14 @@
 
         <!-- Micrometer Tracing (replaces Sleuth in Spring Boot 3.x) -->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+          <groupId>io.micrometer</groupId>
+          <artifactId>micrometer-tracing-bridge-brave</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.zipkin.reporter2</groupId>
-            <artifactId>zipkin-reporter-brave</artifactId>
+          <groupId>io.zipkin.reporter2</groupId>
+          <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
+
 
         <!-- Optional: Observability support for WebFlux -->
         <dependency>
