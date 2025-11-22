@@ -68,10 +68,10 @@ File: `pom.xml` - updated to let Spring Boot manage micrometer tracing versions 
 
 
     <!-- Micrometer Zipkin exporter - no explicit version -->
-   <!-- <dependency>
+    <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-tracing-exporter-zipkin</artifactId>
-    </dependency>-->
+    </dependency>
 
     <!-- Optional: WebFlux if you use reactive endpoints -->
     <dependency>
