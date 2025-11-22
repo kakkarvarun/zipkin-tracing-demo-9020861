@@ -1,14 +1,9 @@
-# application.yaml
 server:
   port: 8000
 
 spring:
   application:
     name: exchange-service
-  # For Spring Cloud Sleuth / Brave (Sleuth-based setups, Spring Boot 2.x)
-  zipkin:
-    base-url: http://localhost:9411/
-    enabled: true
 
 eureka:
   client:
@@ -21,20 +16,16 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-          - health
-          - info
-          - metrics
-          - prometheus
+        include: health, info, metrics, prometheus
   endpoint:
     health:
       show-details: always
+
   tracing:
     enabled: true
     sampling:
       probability: 1.0
-    # For Micrometer Tracing (Spring Boot 3 with micrometer-tracing exporter)
-    exporter:
-      zipkin:
-        endpoint: http://localhost:9411/api/v2/spans
-        service-name: exchange-service
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
